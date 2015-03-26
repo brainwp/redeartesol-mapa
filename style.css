@@ -1,8 +1,8 @@
 /*
-Theme Name: Mapa da Comunidade WordPress-BR
-Theme URI: http://mapa.wp-brasil.org
-Description: Mapa
-Author: Comunidade WordPress-BR
+Theme Name: Mapa da Rede Artesol
+Theme URI: http://artesol.org.br/rede
+Description: Mapa da Rede Artesol 
+Author: Brasa Design
 Version: 0.1
 License: GNU General Public License
 License URI: license.txt
@@ -157,12 +157,12 @@ body { min-width:960px; }
     position: absolute !important;
     width: 20px !important;
     top: -10px !important;
-    left: 18px !important;
+    left: 32px !important;
     color: #FFFFFF !important;
     padding: 2px 4px !important;
     line-height: 1 !important;
     display: block !important;
-    background-color: #18759B !important;
-    border: 1px solid #FFF !important;
+    background-color: #00A669 !important;
+    border: 2px solid #FFF !important;
     border-radius: 6px !important;
 }
