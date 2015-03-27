@@ -15,6 +15,7 @@ function enqueue_scripts() {
         define( 'GEOUSER_INITIAL_LNG', -55 );
     }
 
+    $params['ajax_url'] = admin_url( 'admin-ajax.php' );
     $params['lat'] = GEOUSER_INITIAL_LAT;
     $params['lng'] = GEOUSER_INITIAL_LNG;
     $params['imgbase'] = get_stylesheet_directory_uri() . '/img/';
@@ -57,8 +58,63 @@ function get_map_users() {
     return $users;
 
 }
-
+function remove_pins($html){
+    return null;
+}
+add_filter('geouser_map_pins','remove_pins');
 if ( isset( $_GET['embed'] ) )
     add_filter('show_admin_bar', '__return_false');
+
+//add user fields
+require_once get_template_directory() . '/core/classes/class-user-meta.php';
+require get_template_directory() . '/inc/user-fields.php';
+
+//ajax mapa
+
+function get_user_info_ajax() {
+    if(empty($_POST['id']))
+        die();
+    $user_data = get_userdata( $_POST['id'] );
+    echo '<div class="hovercard" style="width:400px; color:#444;">';
+    if(get_user_meta($_POST['id'],'rede-avatar',true)){
+        echo '<div class="col" style="float:left; width:85px">';
+        echo '<span class="thumbnail">';
+        echo wp_get_attachment_image( get_user_meta($_POST['id'],'rede-avatar',true), 'thumbnail', 0, array('class' => 'photouser'));
+        echo '</span>';
+        echo '</div>';
+    }
+    echo '<div class="col" style="float:right; width: 215px">';
+    echo '<span class="display-name" style="display:block; font-weight:bold; font-size:1.2em;">'; 
+    echo $user_data->display_name;
+    echo '</span>';
+    echo '<div style="width:100%;height:5px;clear:both"></div>';
+    if(!empty($user_data->description)){
+        echo esc_textarea($user_data->description);
+    }
+    echo '<div style="width:100%;height:5px;clear:both"></div>';
+    if(get_user_meta($_POST['id'],'endereco',true)){
+        echo '<b>Endereco:</b> ' . esc_textarea(get_user_meta($_POST['id'],'endereco',true));
+    }
+    echo '<div style="width:100%;height:5px;clear:both"></div>';
+    if(!empty($user_data->user_email)){
+        echo '<b>E-mail:</b> ' . esc_textarea($user_data->user_email);
+    }
+    echo '<div style="width:100%;height:5px;clear:both"></div>';
+    if(get_user_meta($_POST['id'],'telefone',true)){
+        echo '<b>Telefone:</b> ' . esc_textarea(get_user_meta($_POST['id'],'telefone',true));
+    }
+    echo '<div style="width:100%;height:5px;clear:both"></div>';
+    if(get_user_meta($_POST['id'],'link-leia',true)){
+        $link = esc_url(get_user_meta($_POST['id'],'link-leia',true));
+        echo '<a href="'.$link.'">';
+        echo 'Leia mais';
+        echo '</a>';
+    }
+    echo '</div>';
+    echo '</div>';
+    die();
+}
+add_action( 'wp_ajax_nopriv_get_user_info', 'get_user_info_ajax' );
+add_action( 'wp_ajax_get_user_info', 'get_user_info_ajax' );
 
 ?>

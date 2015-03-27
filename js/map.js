@@ -69,6 +69,14 @@ google.maps.event.addDomListener(window, 'load', function(e) {
             hovercard.setContent('<div id="loading" style="color:#444">Buscando...</div>');
             hovercard.open(map, this);
             var query_user = this.user;
+            var data = {
+                'action': 'get_user_info',
+                'id': query_user.ID     
+            };
+            // We can also pass the url value separately from ajaxurl for front end AJAX implementation
+            $.post(maptheme.ajax_url, data, function(response) {
+                hovercard.setContent(response);
+            });
             $.ajax({
                 'url': 'http://en.gravatar.com/' + query_user.gravatar + '.json',
                 'dataType': 'jsonp',
@@ -107,19 +115,7 @@ google.maps.event.addDomListener(window, 'load', function(e) {
                         }
                         accounts = accounts.join(' ');
 
-                        hovercard.setContent(
-                            '<div class="hovercard" style="width:300px; color:#444;">'
-                            + '<div class="col" style="float:left; width:85px">'
-                                + '<span class="thumbnail"><img class="photouser" src="' + gravatar.thumbnailUrl + '" /></span>'
-                            + '</div>'
-                            + '<div class="col" style="float:left; width: 215px">'
-                                + '<span class="display-name" style="display:block; font-weight:bold; font-size:1.2em;">' + gravatar.displayName + '</span>'
-                                + '<span class="about" style="display:block;">' + about + '</span>'
-                                + '<span class="urls" style="display:block;">' + urls + '</span>'
-                                + '<span class="accounts" style="display:block;">' + accounts + '</span>'
-                            + '</div>'
-                            + '</div>'
-                        );
+
 
                     }
                 }
