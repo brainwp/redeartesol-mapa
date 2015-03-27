@@ -77,49 +77,6 @@ google.maps.event.addDomListener(window, 'load', function(e) {
             $.post(maptheme.ajax_url, data, function(response) {
                 hovercard.setContent(response);
             });
-            $.ajax({
-                'url': 'http://en.gravatar.com/' + query_user.gravatar + '.json',
-                'dataType': 'jsonp',
-                'timeout': 4000,
-                'complete': function(xhr, status) {
-
-                    if (status != 'success') {
-
-                        hovercard.setContent(
-                            '<div class="hovercard" style="width:300px; color:#444;">'
-                                + '<span class="display-name" style="display:block; font-weight:bold; font-size:1.2em;">' + query_user.display_name + '</span>'
-                            + '</div>'
-                        );
-
-                    } else {
-
-                        var gravatar = xhr.responseJSON.entry[0];
-
-                        var about;
-                        if (gravatar.aboutMe != undefined)
-                            about = gravatar.aboutMe;
-                        else
-                            about = '';
-
-                        var urls = Array();
-                        for (u in gravatar.urls) {
-                            urls[u] = '<a target="_blank" href="' + gravatar.urls[u].value + '">' + gravatar.urls[u].title + '</a>';
-                        }
-                        urls = urls.join(' - ');
-
-                        var accounts = Array();
-                        for (a in gravatar.accounts) {
-                            accounts[a] = '<a target="_blank" href="' + gravatar.accounts[a].url + '">'
-                                + '<img src="' + maptheme.imgbase + gravatar.accounts[a].shortname + '.png" />'
-                            + '</a>';
-                        }
-                        accounts = accounts.join(' ');
-
-
-
-                    }
-                }
-            });
         });
     }
     var markerCluster = new MarkerClusterer(map, markers, marker_options);
