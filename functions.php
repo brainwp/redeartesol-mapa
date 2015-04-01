@@ -104,6 +104,10 @@ function get_user_info_ajax() {
         echo '<b>Telefone:</b> ' . esc_textarea(get_user_meta($_POST['id'],'telefone',true));
     }
     echo '<div style="width:100%;height:5px;clear:both"></div>';
+    if(get_user_meta($_POST['id'],'arte_type',true)){
+        echo '<b>Tipo de artesão:</b> ' . esc_artetype(get_user_meta($_POST['id'],'arte_type',true));
+    }
+    echo '<div style="width:100%;height:5px;clear:both"></div>';
     if(get_user_meta($_POST['id'],'link-leia',true)){
         $link = esc_url(get_user_meta($_POST['id'],'link-leia',true));
         echo '<a href="'.$link.'">';
@@ -116,5 +120,14 @@ function get_user_info_ajax() {
 }
 add_action( 'wp_ajax_nopriv_get_user_info', 'get_user_info_ajax' );
 add_action( 'wp_ajax_get_user_info', 'get_user_info_ajax' );
+function esc_artetype($key){
+    $types = array(
+        'associacao'   => __('Associação','odin'),
+        'individual'   => __('Artesão individual','odin'),
+        'indigena'     => __('Indígena','odin'),
+        'mestre'       => __('Meste','odin'),
+    );
 
+    return esc_textarea($types[$key]);
+}
 ?>
