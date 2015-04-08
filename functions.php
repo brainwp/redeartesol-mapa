@@ -20,6 +20,9 @@ function enqueue_scripts() {
     $params['lng'] = GEOUSER_INITIAL_LNG;
     $params['imgbase'] = get_stylesheet_directory_uri() . '/img/';
     $params['users'] = get_map_users();
+    if(isset($_GET['embed'])){
+        $params['embed'] = true;
+    }
     wp_localize_script( 'maptheme', 'maptheme', $params );
 
 }

@@ -15,7 +15,9 @@ request = {
 
 var options;
 
-if (request.QueryString('embed')) {
+var embed = maptheme.embed;
+
+if (embed == true) {
     options = {
         center: new google.maps.LatLng(maptheme.lat, maptheme.lng),
         zoom: 5,
