@@ -52,6 +52,7 @@ var marker_options = {
 
 google.maps.event.addDomListener(window, 'load', function(e) {
 
+    console.log(maptheme.users);
     for (u in maptheme.users) {
         var user = maptheme.users[u];
         var image = new google.maps.MarkerImage(

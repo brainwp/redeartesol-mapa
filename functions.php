@@ -31,8 +31,38 @@ function get_map_users() {
 
     global $wpdb;
 
-    if ( $users = get_transient( 'map_users' ) )
-        return $users;
+    if ( $users = get_transient( 'map_users' ) ){
+        if(!isset($_GET['type_pin']) && !isset($_GET['filter_type'])){
+            return $users;
+        }
+
+        $users_filter = array();
+        foreach($users as $key => $user){
+            $add = false;
+            if(isset($_GET['type_pin']) && !empty($_GET['type_pin'])){
+                $type = get_user_meta( $user['ID'], 'type_pin', true );
+                if($type && $type == $_GET['type_pin']){
+                    $add = true;
+                }
+                else{
+                    $add = false;
+                }
+            }
+            if(isset($_GET['filter_type']) && !empty($_GET['filter_type'])){
+                $type = get_user_meta( $user['ID'], 'user_type', true );
+                if($type && $type == $_GET['filter_type']){
+                    $add = true;
+                }
+                else{
+                    $add = false;
+                }
+            }
+            if($add == true){
+                $users_filter[] = $user;
+            }
+        }
+        return $users_filter;
+    }
 
     $query = $wpdb->get_results( "
         SELECT user_id, user_email, display_name, meta_value
