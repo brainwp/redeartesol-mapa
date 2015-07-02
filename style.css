@@ -144,7 +144,9 @@ body { min-width:960px; }
 
 /* Important!!! */
 #map { height:100%; overflow:hidden; position:absolute; width:100%; }
-
+.gm-style-iw{
+    max-height: 200px !important;
+}
 /* Title of the Blog */
 #blog-title     { left:90px; position:fixed; top:30px; max-width:240px; height:150px;}
 #blog-title img { max-width:240px; }
