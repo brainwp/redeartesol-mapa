@@ -41,7 +41,7 @@ function get_map_users() {
             $add = false;
             if(isset($_GET['type_pin']) && !empty($_GET['type_pin'])){
                 $type = get_user_meta( $user['ID'], 'type_pin', true );
-                if($type && $type == $_GET['type_pin']){
+                if($type && in_array($type, $_GET['type_pin'])){
                     $add = true;
                 }
                 else{
