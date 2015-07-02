@@ -40,6 +40,9 @@
             <?php if(isset($_GET['type_pin']) && is_array($_GET['type_pin'])):?>
                 <?php $current_link['type_pin'] = $_GET['type_pin'];?>
             <?php endif;?>
+            <?php if(isset($_GET['embed'])):?>
+                <?php $current_link['embed'] = 'true';?>
+            <?php endif;?>
             <div id="legenda" data-url="<?php echo home_url();?>">
                 <h3>Filtros</h3>
                 <label>
