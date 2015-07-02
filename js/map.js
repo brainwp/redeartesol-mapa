@@ -56,10 +56,10 @@ google.maps.event.addDomListener(window, 'load', function(e) {
     for (u in maptheme.users) {
         var user = maptheme.users[u];
         var image = new google.maps.MarkerImage(
-            maptheme.imgbase + 'marker.png',
+            user['icon'],
             null,
             new google.maps.Point(0,0),
-            new google.maps.Point(45, 39)
+            new google.maps.Point(32, 39)
         );
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(user.lat, user.lng),
@@ -85,4 +85,16 @@ google.maps.event.addDomListener(window, 'load', function(e) {
     var markerCluster = new MarkerClusterer(map, markers, marker_options);
 });
 
+//filtros
+$('#legenda input').on('click',function(e){
+    e.preventDefault();
+    if($(this).hasClass('current')){
+        var _url = $('#legenda').attr('data-url');
+        window.location = _url;
+    }
+    else{
+        var _url = $(this).attr('value');
+        window.location = _url;
+    }
+})
 });

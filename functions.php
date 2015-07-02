@@ -81,8 +81,9 @@ function get_map_users() {
             'ID' => $q->user_id,
             'display_name' => $q->display_name,
             'gravatar' => md5( $q->user_email ),
-            'lat' => $loc[0],
-            'lng' => $loc[1]
+            'lat'  => $loc[0],
+            'lng'  => $loc[1],
+            'icon' => get_template_directory_uri() . '/img/pins/' . get_user_meta( $q->user_id, 'type_pin', true ) . '.png',
         );
     }
 
@@ -156,9 +157,10 @@ add_action( 'wp_ajax_get_user_info', 'get_user_info_ajax' );
 function esc_artetype($key){
     $types = array(
         'associacao'   => __('Associação','odin'),
-        'individual'   => __('Artesão individual','odin'),
-        'indigena'     => __('Indígena','odin'),
-        'mestre'       => __('Meste','odin'),
+        'artesao'   => __('Artesão ou mestre','odin'),
+        'lojistas'     => __('Lojistas','odin'),
+        'aceleradoras' => __('Aceleradoras','odin'),
+        'projetos' => __('Projetos','odin'),
     );
 
     return esc_textarea($types[$key]);

@@ -21,18 +21,16 @@ blockquote:before, blockquote:after, q:before, q:after {content:'';}
 blockquote, q {quotes:"" "";}
 a img {border:none;}
 :focus {outline:0;}
-
-/* Font Face */
 @font-face {
-    font-family: 'Bebas';
-    src: url('fonts/BebasNeue-webfont.eot?') format('eot'),
-         url('fonts/BebasNeue-webfont.woff') format('woff'),
-         url('fonts/BebasNeue-webfont.ttf') format('truetype'),
-         url('fonts/BebasNeue-webfont.svg#webfontfvFLBU0N') format('svg');
+    font-family: 'Gotham-Bold';
+    src: url('fonts/gotham-bold/gotham-bold.eot');
+    src: url('fonts/gotham-bold/gotham-bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/gotham-bold/gotham-bold.woff') format('woff'),
+         url('fonts/gotham-bold/gotham-bold.ttf') format('truetype'),
+         url('fonts/gotham-bold/gotham-bold.svg#gotham-bold') format('svg');
     font-weight: normal;
     font-style: normal;
 }
-
 /* BlueprintCSS */
 
 /* typography.css */
@@ -165,4 +163,33 @@ body { min-width:960px; }
     background-color: #00A669 !important;
     border: 2px solid #FFF !important;
     border-radius: 6px !important;
+}
+#legenda{
+    position:absolute;
+    right:10%;
+    top:40%;
+    background:#f5f5f5;
+    padding:10px;
+    border-radius:20px;
+}
+#legenda label{
+    width: 100%;
+    display: block;
+    clear: both;
+}
+#legenda label img{
+    padding-left: 20px;
+}
+#legenda label input{
+    position: absolute;
+    margin-top: 12px;
+}
+#legenda h3{
+    font-family: 'Gotham-Bold';
+    text-align: center;
+    color:#716657;
+    width: 100%;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 0;
 }

@@ -32,7 +32,29 @@
                 <?php mapasdevista_image("side-menu.png", array("id" => "toggle-side-menu-icon")); ?>
             </div>
         <?php endif; ?>
-
+            <div id="legenda" data-url="<?php echo home_url();?>">
+                <h3>Filtros</h3>
+                <label>
+                    <input type="checkbox" value="<?php echo home_url();?>/?type_pin=projetos" <?php if(isset($_GET['type_pin']) && $_GET['type_pin'] == 'projetos') echo 'checked class="current"';?>>
+                    <img src="<?php echo get_template_directory_uri();?>/img/projetos-legenda.jpg">
+                </label>
+                <label>
+                    <input type="checkbox" value="<?php echo home_url();?>/?type_pin=associacoes" <?php if(isset($_GET['type_pin']) && $_GET['type_pin'] == 'associacoes') echo 'checked class="current"';?>>
+                    <img src="<?php echo get_template_directory_uri();?>/img/associacoes-legenda.jpg">
+                </label>
+                <label>
+                    <input type="checkbox" value="<?php echo home_url();?>/?type_pin=artesao" <?php if(isset($_GET['type_pin']) && $_GET['type_pin'] == 'artesao') echo 'checked class="current"';?>>
+                    <img src="<?php echo get_template_directory_uri();?>/img/artesao-legenda.jpg">
+                </label>
+                <label>
+                    <input type="checkbox" value="<?php echo home_url();?>/?type_pin=lojistas" <?php if(isset($_GET['type_pin']) && $_GET['type_pin'] == 'lojistas') echo 'checked class="current"';?>>
+                    <img src="<?php echo get_template_directory_uri();?>/img/lojistas-legenda.jpg">
+                </label>
+                <label>
+                    <input type="checkbox" value="<?php echo home_url();?>/?type_pin=agentes" <?php if(isset($_GET['type_pin']) && $_GET['type_pin'] == 'agentes') echo 'checked class="current"';?>>
+                    <img src="<?php echo get_template_directory_uri();?>/img/agentes-legenda.jpg">
+                </label>
+            </div>
         <div id="posts-loader">
             <span id="posts-loader-loaded">0</span>/<span id="posts-loader-total">0</span> <span><?php _e('users', 'mapasdevista'); ?></span>
         </div>
