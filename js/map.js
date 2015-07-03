@@ -85,12 +85,13 @@ google.maps.event.addDomListener(window, 'load', function(e) {
     }
     var markerCluster = new MarkerClusterer(map, markers, marker_options);
 });
-
 //filtros
 $('#legenda input').on('click',function(e){
     e.preventDefault();
     if($(this).hasClass('current')){
-        var _url = $('#legenda').attr('data-url');
+        var _url = window.location.search;
+        var _url = _url.replace($(this).attr('data-slug'),'');
+        var _url = window.location + _url;
         window.location = _url;
     }
     else{

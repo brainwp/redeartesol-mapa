@@ -57,6 +57,33 @@ function get_map_users() {
                     $add = false;
                 }
             }
+            if(isset($_GET['membros_perfil']) && !empty($_GET['membros_perfil'])){
+                $type = get_user_meta( $user['ID'], 'membros_perfil', true );
+                if($type && $type == $_GET['membros_perfil']){
+                    $add = true;
+                }
+                else{
+                    $add = false;
+                }
+            }
+            if(isset($_GET['user_category']) && !empty($_GET['user_category'])){
+                $type = get_user_meta( $user['ID'], 'user_category', true );
+                if($type && $type == $_GET['user_category']){
+                    $add = true;
+                }
+                else{
+                    $add = false;
+                }
+            }
+            if(isset($_GET['user_state']) && !empty($_GET['user_state'])){
+                $type = get_user_meta( $user['ID'], 'user_state', true );
+                if($type && $type == $_GET['user_state']){
+                    $add = true;
+                }
+                else{
+                    $add = false;
+                }
+            }
             if($add == true){
                 $users_filter[] = $user;
             }

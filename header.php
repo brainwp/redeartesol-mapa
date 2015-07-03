@@ -49,35 +49,35 @@
                     <?php $link = $current_link;?>
                     <?php $link['type_pin'][] = 'projetos';?>
                     <?php $link_end = add_query_arg($link,home_url('/'));?>
-                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('projetos',$_GET['type_pin'])) echo 'checked class="current"';?>>
+                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('projetos',$_GET['type_pin'])) echo 'checked class="current"';?> data-slug="projetos">
                     <img src="<?php echo get_template_directory_uri();?>/img/projetos-legenda.jpg">
                 </label>
                 <label>
                     <?php $link = $current_link;?>
                     <?php $link['type_pin'][] = 'associacoes';?>
                     <?php $link_end = add_query_arg($link,home_url('/'));?>
-                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('associacoes',$_GET['type_pin'])) echo 'checked class="current"';?>>
+                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('associacoes',$_GET['type_pin'])) echo 'checked class="current"';?> data-slug="associacoes">
                     <img src="<?php echo get_template_directory_uri();?>/img/associacoes-legenda.jpg">
                 </label>
                 <label>
                     <?php $link = $current_link;?>
                     <?php $link['type_pin'][] = 'artesao';?>
                     <?php $link_end = add_query_arg($link,home_url('/'));?>
-                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('artesao',$_GET['type_pin'])) echo 'checked class="current"';?>>
+                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('artesao',$_GET['type_pin'])) echo 'checked class="current"';?> data-slug="artesao">
                     <img src="<?php echo get_template_directory_uri();?>/img/artesao-legenda.jpg">
                 </label>
                 <label>
                     <?php $link = $current_link;?>
                     <?php $link['type_pin'][] = 'lojistas';?>
                     <?php $link_end = add_query_arg($link,home_url('/'));?>
-                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('lojistas',$_GET['type_pin'])) echo 'checked class="current"';?>>
+                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('lojistas',$_GET['type_pin'])) echo 'checked class="current"';?> data-slug="lojistas">
                     <img src="<?php echo get_template_directory_uri();?>/img/lojistas-legenda.jpg">
                 </label>
                 <label>
                     <?php $link = $current_link;?>
                     <?php $link['type_pin'][] = 'agentes';?>
                     <?php $link_end = add_query_arg($link,home_url('/'));?>
-                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('agentes',$_GET['type_pin'])) echo 'checked class="current"';?>>
+                    <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('agentes',$_GET['type_pin'])) echo 'checked class="current"';?> data-slug="agentes">
                     <img src="<?php echo get_template_directory_uri();?>/img/agentes-legenda.jpg">
                 </label>
             </div>
