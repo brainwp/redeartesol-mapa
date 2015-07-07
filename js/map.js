@@ -77,6 +77,12 @@ google.maps.event.addDomListener(window, 'load', function(e) {
                 'action': 'get_user_info',
                 'id': query_user.ID     
             };
+            if (typeof query_user.is_post !== 'undefined') {
+                var data = {
+                    'action': 'get_post_info',
+                    'id': query_user.ID     
+                };
+            }
             // We can also pass the url value separately from ajaxurl for front end AJAX implementation
             $.post(maptheme.ajax_url, data, function(response) {
                 hovercard.setContent(response);
