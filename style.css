@@ -195,3 +195,18 @@ body { min-width:960px; }
     text-transform: uppercase;
     margin-bottom: 0;
 }
+.btn-reset{
+    clear: both;
+    display: inline-block;
+    padding:3px;
+    padding-left:5px;
+    padding-right:5px;
+    border-radius:5px;
+    font-family: 'Gotham-Bold';
+    color:#FFF !important;
+    font-size:1.0em;
+    margin-left:5px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    background: #8f8674;
+}

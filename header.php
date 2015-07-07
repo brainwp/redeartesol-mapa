@@ -21,7 +21,7 @@
 
         <div id="blog-title">
             <a href="<?php echo home_url(); ?>">
-                <?php if(isset($_GET['type_pin']) && is_array($_GET['type_pin']) && in_array('projetos', $_GET['type_pin'])):?>
+                <?php if(show_alt_logo()):?>
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/header-projetos.png" />
                 <?php else:?>
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/header.png" />
@@ -80,6 +80,7 @@
                     <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('agentes',$_GET['type_pin'])) echo 'checked class="current"';?> data-slug="agentes">
                     <img src="<?php echo get_template_directory_uri();?>/img/agentes-legenda.jpg">
                 </label>
+                <a href="<?php echo home_url();?>" class="btn-reset">Limpar</a>
             </div>
         <div id="posts-loader">
             <span id="posts-loader-loaded">0</span>/<span id="posts-loader-total">0</span> <span><?php _e('users', 'mapasdevista'); ?></span>

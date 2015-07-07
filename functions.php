@@ -33,6 +33,10 @@ function get_map_users() {
     global $wpdb;
 
     if ( $users = get_transient( 'map_users' ) ){
+        if(!isset($_GET['type_pin']) && !isset($_GET['filter_type']) && !isset($_GET['membros_perfil']) && !isset($_GET['user_category']) && !isset($_GET['user_state'])) {
+            return $users;
+        }
+
         $users_filter = array();
         foreach($users as $key => $user){
             $add = false;
@@ -296,5 +300,21 @@ function esc_artetype($key){
     );
 
     return esc_textarea($types[$key]);
+}
+function show_alt_logo(){
+    if(!isset($_GET['type_pin']))
+        return false;
+    if(!in_array('projetos', $_GET['type_pin']))
+        return false;
+    if(in_array('associacoes', $_GET['type_pin']))
+        return false;
+    if(in_array('artesao', $_GET['type_pin']))
+        return false;
+    if(in_array('lojistas', $_GET['type_pin']))
+        return false;
+    if(in_array('agentes', $_GET['type_pin']))
+        return false;
+    
+    return true;
 }
 ?>
