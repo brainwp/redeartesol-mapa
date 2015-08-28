@@ -137,6 +137,12 @@ function get_map_posts(){
     $args = array (
         'post_type' => array( 'projetos' ),
         'posts_per_page' => -1,
+        'meta_query' => array(
+            array(
+                'key'     => 'project_map',
+                'compare' => 'EXISTS',
+            ),
+        ),
     );
 
     if(isset($_GET['user_state']) && !empty($_GET['user_state'])){

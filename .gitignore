@@ -19,3 +19,4 @@ Vagrantfile
 *.swo
 *~
 sftp-config.json
+users-migrar.php
