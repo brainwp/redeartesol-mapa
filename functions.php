@@ -187,8 +187,8 @@ if ( isset( $_GET['embed'] ) )
     add_filter('show_admin_bar', '__return_false');
 
 //add user fields
-require_once get_template_directory() . '/core/classes/class-user-meta.php';
-require get_template_directory() . '/inc/user-fields.php';
+//require_once get_template_directory() . '/core/classes/class-user-meta.php';
+//require get_template_directory() . '/inc/user-fields.php';
 
 //ajax mapa
 
