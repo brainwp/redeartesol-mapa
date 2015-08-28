@@ -69,7 +69,6 @@ google.maps.event.addDomListener(window, 'load', function(e) {
         marker.set('user', user);
         markers.push(marker);
         google.maps.event.addListener(marker, 'click', function(){
-            map.setCenter(marker.getPosition());
             hovercard.setContent('<div id="loading" style="color:#444">Buscando...</div>');
             hovercard.open(map, this);
             var query_user = this.user;
