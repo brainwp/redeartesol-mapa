@@ -144,9 +144,7 @@ body { min-width:960px; }
 
 /* Important!!! */
 #map { height:100%; overflow:hidden; position:absolute; width:100%; }
-.gm-style-iw{
-    max-height: 200px !important;
-}
+
 /* Title of the Blog */
 #blog-title     { left:90px; position:fixed; top:30px; max-width:240px; height:150px;}
 #blog-title img { max-width:240px; }
@@ -209,4 +207,17 @@ body { min-width:960px; }
     text-transform: uppercase;
     text-decoration: none !important;
     background: #8f8674;
+}
+.btn-leia{
+    font-family: "Gotham-Bold";
+    color: #FFF !important;
+    background: #199B6C none repeat scroll 0% 0%;
+    border: medium none transparent !important;
+    border-radius:5px;
+    text-align: center;
+    padding:6px;
+    display: inline-block;
+    font-size:1.1em;
+    text-decoration: none !important;
+    text-transform: uppercase;
 }

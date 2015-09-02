@@ -229,10 +229,10 @@ function get_user_info_ajax() {
         echo '<b>Tipo de artesão:</b> ' . esc_artetype(get_user_meta($_POST['id'],'arte_type',true));
     }
     echo '<div style="width:100%;height:5px;clear:both"></div>';
-    if(get_user_meta($_POST['id'],'link-leia',true)){
-        $link = esc_url(get_user_meta($_POST['id'],'link-leia',true));
-        echo '<a href="'.$link.'">';
-        echo 'Leia mais';
+    if( $user_data->user_url && !empty( $user_data->user_url ) ){
+        $link = esc_url( $user_data->user_url );
+        echo '<a href="'.$link.'" class="btn-leia">';
+        echo 'Saiba mais';
         echo '</a>';
     }
     echo '</div>';

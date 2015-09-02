@@ -35,7 +35,10 @@ if (embed == true) {
 }
 
 var map = new google.maps.Map(document.getElementById(_map_id), options);
-var hovercard = new google.maps.InfoWindow({});
+var hovercard = new google.maps.InfoWindow({
+   maxHeight: 9999999999999,
+   height: 800 
+});
 
 var markers = [];
 var marker_options = {
