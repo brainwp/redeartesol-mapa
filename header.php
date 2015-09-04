@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <head>
+        <?php if ( isset( $_GET['embed'] ) ) : ?>
+            <base target="_parent">
+        <?php endif;?>
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
         <meta name="google" value="notranslate"><!--  this avoids problems with hash change and the google chrome translate bar -->
         <title><?php
