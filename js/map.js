@@ -40,7 +40,12 @@ var hovercard = new google.maps.InfoWindow({
    height: 800 
 });
 
-var markers = [];
+var markers_associacoes = [];
+var markers_projetos = [];
+var markers_artesao = [];
+var markers_lojistas = [];
+var markers_agentes = [];
+
 var marker_options = {
     styles: [{
         anchorIcon: [ 45, 39 ],
@@ -52,7 +57,61 @@ var marker_options = {
         url: maptheme.imgbase + 'marker.png',
     }]
 };
-
+var marker_options_associacoes = {
+    styles: [{
+        anchorIcon: [ 45, 39 ],
+        //fontFamily: Oswald,
+        fontWeight: 'bold',
+        width: 45,
+        height: 39,
+        textSize: 14,
+        url: maptheme.imgbase + 'pins/associacoes.png',
+    }]
+};
+var marker_options_projetos = {
+    styles: [{
+        anchorIcon: [ 45, 39 ],
+        //fontFamily: Oswald,
+        fontWeight: 'bold',
+        width: 45,
+        height: 39,
+        textSize: 14,
+        url: maptheme.imgbase + 'pins/projetos.png',
+    }]
+};
+var marker_options_artesao = {
+    styles: [{
+        anchorIcon: [ 45, 39 ],
+        //fontFamily: Oswald,
+        fontWeight: 'bold',
+        width: 45,
+        height: 39,
+        textSize: 14,
+        url: maptheme.imgbase + 'pins/artesao.png',
+    }]
+};
+var marker_options_lojistas = {
+    styles: [{
+        anchorIcon: [ 45, 39 ],
+        //fontFamily: Oswald,
+        fontWeight: 'bold',
+        width: 45,
+        height: 39,
+        textSize: 14,
+        url: maptheme.imgbase + 'pins/lojistas.png',
+    }]
+};
+var marker_options_agentes = {
+    styles: [{
+        anchorIcon: [ 45, 39 ],
+        //fontFamily: Oswald,
+        fontWeight: 'bold',
+        width: 45,
+        height: 39,
+        textSize: 14,
+        url: maptheme.imgbase + 'pins/agentes.png',
+    }]
+};
 google.maps.event.addDomListener(window, 'load', function(e) {
 
     console.log(maptheme.users);
@@ -70,7 +129,21 @@ google.maps.event.addDomListener(window, 'load', function(e) {
             icon: image
         });
         marker.set('user', user);
-        markers.push(marker);
+        if ( user['icon'].search('associacoes') != -1 ){
+            markers_associacoes.push( marker );
+        } 
+        else if ( user['icon'].search('projetos') != -1 ){
+            markers_projetos.push( marker );
+        }
+        else if ( user['icon'].search('artesao') != -1 ){
+            markers_artesao.push( marker );
+        }
+        else if ( user['icon'].search('lojistas') != -1 ){
+            markers_lojistas.push( marker );
+        }
+        else if ( user['icon'].search('agentes') != -1 ){
+            markers_agentes.push( marker );
+        }
         google.maps.event.addListener(marker, 'click', function(){
             hovercard.setContent('<div id="loading" style="color:#444">Buscando...</div>');
             hovercard.open(map, this);
@@ -91,7 +164,12 @@ google.maps.event.addDomListener(window, 'load', function(e) {
             });
         });
     }
-    var markerCluster = new MarkerClusterer(map, markers, marker_options);
+    var group_associacoes = new MarkerClusterer(map, markers_associacoes, marker_options_associacoes);
+    var group_projetos = new MarkerClusterer(map, markers_projetos, marker_options_projetos);
+    var group_artesao = new MarkerClusterer(map, markers_artesao, marker_options_artesao);
+    var group_lojistas = new MarkerClusterer(map, markers_lojistas, marker_options_lojistas);
+    var group_projetos = new MarkerClusterer(map, markers_agentes, marker_options_agentes);
+
 });
 //filtros
 $('#legenda input').on('click',function(e){
