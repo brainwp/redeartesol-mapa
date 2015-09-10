@@ -1,4 +1,8 @@
 <?php
+function brasa_get_user_role_by_id( $id ) {
+    $user_info = get_userdata( $id );
+    return implode(', ', $user_info->roles);
+}
 
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 function enqueue_scripts() {
@@ -85,6 +89,7 @@ function get_map_users() {
                     $add = false;
                 }
             }
+
             if($add == true){
                 $users_filter[] = $user;
             }
@@ -102,6 +107,12 @@ function get_map_users() {
 
     $users = array();
     foreach( $query as $q ) {
+        $search = strpos( brasa_get_user_role_by_id( $q->user_id), 'subscriber' );
+        $search_caps = strpos( brasa_get_user_role_by_id( $q->user_id), 'Subscriber' );
+
+        if( $search === false && $search_caps === false ) {
+            continue;
+        }
         $loc = unserialize( $q->meta_value );
         if ( empty( $loc[0] ) || empty( $loc[1] ) )
             continue;
@@ -284,7 +295,7 @@ function get_post_info_ajax() {
     echo '<a href="'.$link.'" class="btn-leia">';
     echo 'Leia mais';
     echo '</a>';
-    
+
     echo '</div>';
     echo '</div>';
     restore_current_blog();
@@ -321,4 +332,8 @@ function show_alt_logo(){
     
     return true;
 }
+function brasa_add_user_role(){
+    $result = add_role( 'comentadores', __('Comentadores', 'odin'), array() );
+}
+add_action( 'init', 'brasa_add_user_role' );
 ?>
