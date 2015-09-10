@@ -213,20 +213,17 @@ function get_user_info_ajax() {
         echo esc_textarea($user_data->description);
     }
     echo '<div style="width:100%;height:5px;clear:both"></div>';
-    if(get_user_meta($_POST['id'],'endereco',true)){
-        echo '<b>Endereco:</b> ' . esc_textarea(get_user_meta($_POST['id'],'endereco',true));
+    if( $field = get_user_meta( $user->ID, 'user_email', true) ){
+        echo '<b>E-mail:</b> ';
+        printf( '<a href="%s">%s</a>', esc_textarea( $field ), esc_textarea( $field ) );
     }
-    echo '<div style="width:100%;height:5px;clear:both"></div>';
-    if(!empty($user_data->user_email)){
-        echo '<b>E-mail:</b> ' . esc_textarea($user_data->user_email);
+    else{
+        echo '<b>E-mail:</b> ';
+        printf( '<a href="%s">%s</a>', esc_textarea( $user->user_email ), esc_textarea( $user->user_email ) );
     }
     echo '<div style="width:100%;height:5px;clear:both"></div>';
     if(get_user_meta($_POST['id'],'telefone',true)){
-        echo '<b>Telefone:</b> ' . esc_textarea(get_user_meta($_POST['id'],'telefone',true));
-    }
-    echo '<div style="width:100%;height:5px;clear:both"></div>';
-    if(get_user_meta($_POST['id'],'arte_type',true)){
-        echo '<b>Tipo de artesão:</b> ' . esc_artetype(get_user_meta($_POST['id'],'arte_type',true));
+        echo '<b>Telefone(s):</b> ' . esc_textarea(get_user_meta($_POST['id'],'telefone',true));
     }
     echo '<div style="width:100%;height:5px;clear:both"></div>';
     if( $user_data->user_url && !empty( $user_data->user_url ) ){
