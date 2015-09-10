@@ -253,8 +253,10 @@ function get_post_info_ajax() {
     }
     switch_to_blog($main_id);
 
-    $post = get_post( $_POST['id'] );
-    setup_postdata( $post ); 
+    $projeto = get_post( $_POST['id'] );
+    setup_postdata( $projeto );
+    global $post; 
+    $post = $projeto;
     echo '<div class="hovercard" style="width:400px; color:#444;">';
     if( has_post_thumbnail($post->ID) ) {
         echo '<div class="col" style="float:left; width:85px">';
@@ -278,12 +280,11 @@ function get_post_info_ajax() {
         echo '<b>Gênero:</b> ' . esc_textarea(get_post_meta($post->ID,'project_type',true));
     }
     echo '<div style="width:100%;height:5px;clear:both"></div>';
-    if(get_user_meta($_POST['id'],'link-leia',true)){
-        $link = get_permalink($post->ID);
-        echo '<a href="'.$link.'">';
-        echo 'Leia mais';
-        echo '</a>';
-    }
+    $link = get_permalink($post->ID);
+    echo '<a href="'.$link.'" class="btn-leia">';
+    echo 'Leia mais';
+    echo '</a>';
+    
     echo '</div>';
     echo '</div>';
     restore_current_blog();
