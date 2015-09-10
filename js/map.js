@@ -37,7 +37,7 @@ if (embed == true) {
 var map = new google.maps.Map(document.getElementById(_map_id), options);
 var hovercard = new google.maps.InfoWindow({
    maxHeight: 9999999999999,
-   height: 800 
+   height: 800,
 });
 
 var markers_associacoes = [];
@@ -145,6 +145,7 @@ google.maps.event.addDomListener(window, 'load', function(e) {
             markers_agentes.push( marker );
         }
         google.maps.event.addListener(marker, 'click', function(){
+            $infos = this;
             hovercard.setContent('<div id="loading" style="color:#444">Buscando...</div>');
             hovercard.open(map, this);
             var query_user = this.user;
@@ -160,7 +161,9 @@ google.maps.event.addDomListener(window, 'load', function(e) {
             }
             // We can also pass the url value separately from ajaxurl for front end AJAX implementation
             $.post(maptheme.ajax_url, data, function(response) {
+                hovercard.close( map, $infos );
                 hovercard.setContent(response);
+                hovercard.open( map, $infos );
             });
         });
     }

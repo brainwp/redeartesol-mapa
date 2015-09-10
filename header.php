@@ -19,7 +19,7 @@
     </head>
 
     <body <?php body_class(); ?>>
-
+        <div id="loading-bg"></div><!-- #loading-bg -->
         <div id="map"></div>
 
         <div id="blog-title">
