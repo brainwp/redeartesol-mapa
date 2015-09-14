@@ -204,14 +204,23 @@ if ( isset( $_GET['embed'] ) )
 //ajax mapa
 
 function get_user_info_ajax() {
+    if(get_option('wpmu_main_site')){
+        $main_id = get_option('wpmu_main_site');
+    }
+    else{
+        update_option('wpmu_main_site', 1);
+        $main_id = 1;
+    }
+    switch_to_blog($main_id);
+
     if(empty($_POST['id']))
         die();
     $user_data = get_userdata( $_POST['id'] );
     echo '<div class="hovercard" style="width:400px; color:#444;">';
-    if(get_user_meta($_POST['id'],'rede-avatar',true)){
+    if($field = get_user_meta($_POST['id'],'user_avatar',true)){
         echo '<div class="col" style="float:left; width:85px">';
         echo '<span class="thumbnail">';
-        echo wp_get_attachment_image( get_user_meta($_POST['id'],'rede-avatar',true), 'thumbnail', 0, array('class' => 'photouser'));
+        echo wp_get_attachment_image( $field, 'thumbnail', 0, array('class' => 'photouser') );
         echo '</span>';
         echo '</div>';
     }
@@ -245,6 +254,8 @@ function get_user_info_ajax() {
     }
     echo '</div>';
     echo '</div>';
+    restore_current_blog();
+
     die();
 }
 add_action( 'wp_ajax_nopriv_get_user_info', 'get_user_info_ajax' );
