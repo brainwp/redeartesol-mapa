@@ -160,10 +160,15 @@ body { min-width:960px; }
     padding: 2px 4px !important;
     line-height: 1 !important;
     display: block !important;
-    background-color: #00A669 !important;
-    border: 2px solid #FFF !important;
-    border-radius: 6px !important;
+    background-color: #BBB !important;
+    border: 1px solid #FFF !important;
+    border-radius: 35px !important;
 }
+
+.cluster {
+	height: 50px !important;
+} 
+
 #legenda{
     position:absolute;
     right:10%;
