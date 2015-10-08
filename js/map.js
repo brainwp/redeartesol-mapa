@@ -167,12 +167,13 @@ google.maps.event.addDomListener(window, 'load', function(e) {
             });
         });
     }
-    var group_associacoes = new MarkerClusterer(map, markers_associacoes, marker_options_associacoes);
+    var group_agentes = new MarkerClusterer(map, markers_associacoes, marker_options_associacoes);
     var group_projetos = new MarkerClusterer(map, markers_projetos, marker_options_projetos);
     var group_artesao = new MarkerClusterer(map, markers_artesao, marker_options_artesao);
     var group_lojistas = new MarkerClusterer(map, markers_lojistas, marker_options_lojistas);
-    var group_agentes = new MarkerClusterer(map, markers_agentes, marker_options_agentes);
-
+    google.maps.event.addListener(group_agentes, 'clusterclick', function (e) {
+        console.log( this );
+    }); 
 });
 //filtros
 $('#legenda input').on('click',function(e){
