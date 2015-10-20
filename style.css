@@ -151,7 +151,7 @@ body { min-width:960px; }
 
 /* Map clusterer counter */
 
-.cluster div {
+.cluster span {
     position: absolute !important;
     width: 20px !important;
     top: -10px !important;
@@ -165,9 +165,6 @@ body { min-width:960px; }
     border-radius: 35px !important;
 }
 
-.cluster {
-	height: 50px !important;
-} 
 
 #legenda{
     position:absolute;
