@@ -189,4 +189,8 @@ $('#legenda input').on('click',function(e){
         window.location = _url;
     }
 })
+$( '.btn-reset' ).on('click', function(e){
+    e.preventDefault();
+    window.location = $(this).attr('href');
+})
 });
