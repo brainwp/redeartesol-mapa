@@ -83,7 +83,11 @@
                     <input type="checkbox" value="<?php echo esc_url($link_end);?>" <?php if(isset($_GET['type_pin']) && in_array('agentes',$_GET['type_pin'])) echo 'checked class="current"';?> data-slug="agentes">
                     <img src="<?php echo get_template_directory_uri();?>/img/agentes-legenda.jpg">
                 </label>
-                <a href="<?php echo home_url();?>" class="btn-reset">Limpar</a>
+                <?php $clean_url = home_url();?>
+                <?php if ( isset( $_GET['embed'] ) ) : ?>
+                    <?php $clean_url = home_url( '/?embed' );?>
+                <?php endif;?>
+                <a href="<?php echo $clean_url;?>" class="btn-reset">Limpar</a>
             </div>
         <div id="posts-loader">
             <span id="posts-loader-loaded">0</span>/<span id="posts-loader-total">0</span> <span><?php _e('users', 'mapasdevista'); ?></span>

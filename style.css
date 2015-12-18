@@ -165,9 +165,6 @@ body { min-width:960px; }
     border-radius: 35px !important;
 }
 
-.cluster {
-	height: 50px !important;
-} 
 
 #legenda{
     position:absolute;
